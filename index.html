@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +23,18 @@
     const audioP = new Audio("don.wav");
     audioP.preload = "auto";
 
+    //======================================
+
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioContext = new AudioContext();
+
+    const audioElement = document.getElementById("don");
+    const track = audioContext.createMediaElementSource(audioElement);
+    track.connect(audioContext.destination);
+
     function toggle() {
 
-        type = (type % 3) +1;
+        type = (type % 5) +1;
         status.textContent = `現在type${type}です`
     }
 
@@ -44,6 +54,15 @@
             case 3:
                 don.currentTime = 0;
                 don.play();
+                break;
+
+            case 4:
+                audioElement.play();
+                break;
+
+            case 5:
+                audioElement.currentTime = 0;
+                audioElement.play();
                 break;
         }
     })
