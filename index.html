@@ -7,23 +7,23 @@
 </head>
 <body>
     <p id="status"></p>
-    <button onclick="toggle()">切り替え</button>
+    <button onclick="test()">test</button>
     <canvas id="canvasA" width="800" height="400"></canvas>
-    <audio id="don" src="./don.wav"></audio>
+    <audio id="don" src="sounds/don.wav"></audio>
 </body>
 <style>
 
 </style>
 <script>
     let status = document.getElementById("status");
-    let type = 1;
 
-    const don = document.getElementById("don");
-    const audioP = new Audio("don.wav");
-    audioP.preload = "auto";
+    function test() {
+        document.getElementById("don").play();
+    }
 
     //======================================
 
+    /*
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     const audioContext = new AudioContext();
 
@@ -31,48 +31,17 @@
     const track = audioContext.createMediaElementSource(audioElement);
     track.connect(audioContext.destination);
 
-    function toggle() {
-
-        type = (type % 5) +1;
-        status.textContent = `現在type${type}です`
-    }
 
     document.getElementById("canvasA").addEventListener("touchstart",function() {
-        switch(type) {
-            case 1:
-                const audio = new Audio("don.wav");
-                audio.currentTime = 0;
-                audio.play();
-                break;
-
-            case 2:
-                audioP.currentTime = 0;
-                audioP.play();
-                break;
-
-            case 3:
-                don.currentTime = 0;
-                don.play();
-                break;
-
-            case 4:
-                if (audioContext.state === "suspended") {
-                    audioContext.resume();
-                }       
+        if (audioContext.state === "suspended") {
+            audioContext.resume();
+        }       
                 
-                audioElement.play();
-                break;
+        audioElement.play();
 
-            case 5:
-                if (audioContext.state === "suspended") {
-                    audioContext.resume();
-                }       
-
-                audioElement.currentTime = 0;
-                audioElement.play();
-                break;
-        }
     })
+    */
+    
 
 
 </script>
