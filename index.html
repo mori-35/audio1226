@@ -27,7 +27,7 @@
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     const audioContext = new AudioContext();
 
-    const audioElement = document.getElementById("don");
+    const audioElement = document.querySelector("audio");
     const track = audioContext.createMediaElementSource(audioElement);
     track.connect(audioContext.destination);
 
